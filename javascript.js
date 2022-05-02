@@ -33,7 +33,20 @@ function playRound(playerSelection, computerSelection) {
         return "You Win! Scissor beats paper.";
     }
 }
-const playerSelection = "rock";
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
+// const playerSelection = "rock";
+// const computerSelection = computerPlay();
+// console.log(playRound(playerSelection, computerSelection));
 
+function game(){
+    //note: for scores I can instead write another function that keeps score
+    for(let i = 0; i < 5; i++){
+        computerSelection = computerPlay();
+        console.log(computerSelection);
+        const playerSelection = prompt("Rock, Paper or Scissor?");
+        console.log(playerSelection)
+        playRound(playerSelection, computerSelection);
+        console.log(playRound(playerSelection, computerSelection));
+    } 
+return;
+}
+game();
