@@ -67,15 +67,16 @@ function game(playerSelection) {
         
         
         
-
-        
-
-        console.log(playRound(playerSelection, computerSelection));
-
-
-
-    console.log(`Player score ${playerScore}`);
-    console.log(`Computer score ${computerScore}`);
+        const body = document.querySelector('body');
+        const div = document.createElement('div');
+        div.textContent = playRound(playerSelection, computerSelection);
+        body.appendChild(div);
+        const divScore = document.createElement('div');
+        divScore.setAttribute('style', 'white-space: pre;');
+        divScore.textContent = `Player score: ${playerScore} \r\nComputer score: ${computerScore}`;
+        div.appendChild(divScore);
+    // console.log(`Player score ${playerScore}`);
+    // console.log(`Computer score ${computerScore}`);
     
     if((playerScore === 5) || (computerScore === 5)){
         console.log(score(playerScore, computerScore));
