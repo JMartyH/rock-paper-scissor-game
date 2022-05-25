@@ -60,7 +60,41 @@ function score(playerScore, computerScore) {
 
 }
 
+function startGame() {
+    const btn = document.querySelectorAll('button');
+    btn.forEach(button => {
+        button.addEventListener('click', function (e) {
+            playerSelection = e.target.outerText;
+            console.log(playerSelection)
+            game(playerSelection);
+        })
+    })
+}
 
+function endGame() {
+    const resetBtn = document.createElement('button');
+    const body = document.querySelector('body');
+    const container = document.querySelector('#container');
+
+    const btn = document.querySelectorAll('button');
+    btn.forEach(button => {
+        button.disabled = true;
+    })
+
+    resetBtn.textContent = 'Reset';
+    resetBtn.className = 'button reset';
+    resetBtn.type = 'button';
+
+
+
+    resetBtn.addEventListener('click', () => {
+        location.reload();
+        startGame();
+    });
+
+    body.insertBefore(resetBtn, container);
+
+}
 
 function game(playerSelection) {
 
@@ -82,18 +116,12 @@ function game(playerSelection) {
         const divResult = document.createElement('div')
         divResult.textContent = score(playerScore, computerScore)
         container.appendChild(divResult);
+        endGame();
     }
 }
 
+startGame();
 
-const btn = document.querySelectorAll('button');
-btn.forEach(button => {
-    button.addEventListener('click', function (e) {
-        playerSelection = e.target.outerText;
-        console.log(playerSelection)
-        game(playerSelection);
-    })
-})
 
 
 
