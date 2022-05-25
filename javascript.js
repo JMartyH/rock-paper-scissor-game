@@ -2,6 +2,9 @@
 let playerScore = 0;
 let computerScore = 0;
 let playerSelection;
+const NUMBER_OF_ROUNDS = 5;
+
+
 
 function computerPlay() {
     let rock = "rock";
@@ -60,36 +63,38 @@ function score(playerScore, computerScore) {
 
 
 function game(playerSelection) {
-    
-        computerSelection = computerPlay();
-        console.log(computerSelection);
- 
-        
-        
-        
-        const body = document.querySelector('body');
-        const div = document.createElement('div');
-        div.textContent = playRound(playerSelection, computerSelection);
-        body.appendChild(div);
-        const divScore = document.createElement('div');
-        divScore.setAttribute('style', 'white-space: pre;');
-        divScore.textContent = `Player score: ${playerScore} \r\nComputer score: ${computerScore}`;
-        div.appendChild(divScore);
-    // console.log(`Player score ${playerScore}`);
-    // console.log(`Computer score ${computerScore}`);
-    
-    if((playerScore === 5) || (computerScore === 5)){
-        console.log(score(playerScore, computerScore));
-        return;
+
+
+
+    computerSelection = computerPlay();
+    console.log(computerSelection);
+
+    const container = document.querySelector('#container');
+    const div = document.createElement('div');
+    div.textContent = playRound(playerSelection, computerSelection);
+    container.appendChild(div);
+    const divScore = document.createElement('div');
+    divScore.setAttribute('style', 'white-space: pre;');
+    divScore.textContent = `Player score: ${playerScore} \r\nComputer score: ${computerScore}`;
+    div.appendChild(divScore);
+
+    if ((playerScore === NUMBER_OF_ROUNDS) || (computerScore === NUMBER_OF_ROUNDS)) {
+        const divResult = document.createElement('div')
+        divResult.textContent = score(playerScore, computerScore)
+        container.appendChild(divResult);
     }
-    
 }
+
+
 const btn = document.querySelectorAll('button');
 btn.forEach(button => {
-    button.addEventListener('click', function(e){
+    button.addEventListener('click', function (e) {
         playerSelection = e.target.outerText;
         console.log(playerSelection)
         game(playerSelection);
     })
 })
+
+
+
 
