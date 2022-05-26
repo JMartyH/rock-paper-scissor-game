@@ -4,16 +4,30 @@
 <head>
     <meta charset="utf-8">
     <title>Rock Paper Scissor Game</title>
+    <link rel="stylesheet" href="style.css">
     <script src="javascript.js" defer></script>
 </head>
 
 <body>
 
-    <button class="button rock">ROCK</button>
-    <button class="button paper">PAPER</button>
-    <button class="button scissor">SCISSOR</button>
-    <div id="container">
-
+    <!-- <button id="rock" class="button rock">ROCK</button>
+    <button id="paper" class="button paper">PAPER</button>
+    <button id="scissor" class="button scissor">SCISSOR</button> -->
+    <div id="main-container">
+        <div class="header">
+            <img src="./images/logo.png" alt="logo">
+        </div>
+        <div class="button-container">
+            <div id="container-buttons" class="inputs">
+                <input id="rock" type="image" name="rock" src="./images/rock2.png" alt="rock">
+                <input id="paper" type="image" name="paper" src="./images/paper.png" alt="paper">
+                <input id="scissor" type="image" name="scissor" src="./images/scissor.png" alt="scissor">
+            </div>
+        </div>
+        <div id="container-result">
+            <div id="container">
+            </div>
+        </div>
     </div>
 </body>
 
