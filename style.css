@@ -56,3 +56,7 @@ input {
 #container{
     background-color: white;
 }
+
+#reset{
+    margin-left: 80px;
+}

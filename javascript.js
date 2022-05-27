@@ -61,10 +61,10 @@ function score(playerScore, computerScore) {
 }
 
 function startGame() {
-    const btn = document.querySelectorAll('button');
+    const btn = document.querySelectorAll('input');
     btn.forEach(button => {
         button.addEventListener('click', function (e) {
-            playerSelection = e.target.outerText;
+            playerSelection = e.target.name;
             console.log(playerSelection)
             game(playerSelection);
         })
@@ -72,18 +72,19 @@ function startGame() {
 }
 
 function endGame() {
-    const resetBtn = document.createElement('button');
-    const body = document.querySelector('body');
-    const container = document.querySelector('#container');
+    const resetBtn = document.createElement('input');
+    const buttonContainer = document.querySelector('.button-container');
+    const containerButtons = document.querySelector('#container-buttons');
 
-    const btn = document.querySelectorAll('button');
+    const btn = document.querySelectorAll('input');
     btn.forEach(button => {
         button.disabled = true;
     })
 
-    resetBtn.textContent = 'Reset';
-    resetBtn.className = 'button reset';
+    resetBtn.name = 'reset';
+    resetBtn.id = 'reset';
     resetBtn.type = 'button';
+    resetBtn.value = 'RESET GAME!'
 
 
 
@@ -92,7 +93,7 @@ function endGame() {
         startGame();
     });
 
-    body.insertBefore(resetBtn, container);
+    buttonContainer.insertBefore(resetBtn, containerButtons.nextSibling);
 
 }
 
