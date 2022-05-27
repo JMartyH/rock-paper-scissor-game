@@ -104,19 +104,14 @@ function game(playerSelection) {
     computerSelection = computerPlay();
     console.log(computerSelection);
 
-    const container = document.querySelector('#container');
-    const div = document.createElement('div');
-    div.textContent = playRound(playerSelection, computerSelection);
-    container.appendChild(div);
-    const divScore = document.createElement('div');
-    divScore.setAttribute('style', 'white-space: pre;');
-    divScore.textContent = `Player score: ${playerScore} \r\nComputer score: ${computerScore}`;
-    div.appendChild(divScore);
+    const textAreaResults = document.querySelector('#textarea-result');
+    textAreaResults.setAttribute('style', 'text-align: left;');
 
+    textAreaResults.append(playRound(playerSelection, computerSelection));
+    textAreaResults.append(`\r\nPlayer score: ${playerScore} \r\nComputer score: ${computerScore}\r\n\r\n`);
+    
     if ((playerScore === NUMBER_OF_ROUNDS) || (computerScore === NUMBER_OF_ROUNDS)) {
-        const divResult = document.createElement('div')
-        divResult.textContent = score(playerScore, computerScore)
-        container.appendChild(divResult);
+        textAreaResults.append(score(playerScore, computerScore));
         endGame();
     }
 }
